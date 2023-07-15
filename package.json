@@ -1,0 +1,33 @@
+{
+  "name": "ghost-storage-adapter-s3",
+  "version": "1.0.0",
+  "description": "An adapter for Ghost blogging platform.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/traPtitech/ghost-storage-adapter-s3.git"
+  },
+  "keywords": [
+    "adapter",
+    "ghost",
+    "s3",
+    "storage"
+  ],
+  "author": "sapphi-red <green@sapphi.red> (https://github.com/sapphi-red)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/traPtitech/ghost-storage-adapter-s3/issues"
+  },
+  "homepage": "https://github.com/traPtitech/ghost-storage-adapter-s3#readme",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.370.0",
+    "concat-stream": "^2.0.0",
+    "fast-glob": "^3.2.5",
+    "fs-extra": "^9.1.0",
+    "ghost-storage-base": "0.0.5",
+    "sharp": "^0.25.4"
+  }
+}
