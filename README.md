@@ -21,7 +21,8 @@ cp -r ./node_modules/ghost-storage-adapter-s3 ./content/adapters/storage/s3
       "region": "your-region",
       "bucket": "your-bucket-name",
       "serverUrl": "your-page-domain/content/images",
-      "endpoint": "your-s3-endpoint"
+      "endpoint": "your-s3-endpoint",
+      "cacheFolder": "cache-folder-name"
     }
   },
   "imageOptimization": {
