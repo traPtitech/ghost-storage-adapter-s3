@@ -3,7 +3,7 @@ const path = require('path')
 const sharp = require('sharp')
 const concatStream = require('concat-stream')
 const glob = require('fast-glob')
-const { GetObjectCommand } = require('@aws-sdk/client-s3')
+const { GetObjectCommand, NoSuchKey } = require('@aws-sdk/client-s3')
 
 const DEFAULT_MAX_WIDTH = 1024
 
@@ -165,7 +165,11 @@ module.exports = class Cache {
     )
 
     output.Body.on('error', err => {
-      throw err
+      if ( err instanceof NoSuchKey) {
+        // set error code 'ENOENT' to make sharp throw error
+        err.code = 'ENOENT'
+        throw err
+      }
     })
     output.Body.pipe(concatStream(file => {
       return file
