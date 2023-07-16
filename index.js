@@ -22,7 +22,7 @@ class S3Adapter extends BaseAdapter {
         secretAccessKey: config.secretAccessKey
       }
     })
-    this.cache = new Cache(config.cacheFolder, this.client, this.containerName)
+    this.cache = new Cache(config.cacheFolder, this.client, this.bucketName)
   }
 
   async exists(filename, directory) {
