@@ -16,8 +16,8 @@ module.exports = class Cache {
     this.bucketName = bucketName
   }
 
-  getOriginal(filePath) {
-    return this.download(filePath)
+  async getOriginal(filePath) {
+    return await this.download(filePath)
   }
 
   async ensure(filePath, rawParam) {
@@ -156,20 +156,19 @@ module.exports = class Cache {
     return output.Body
   }
 
-  download(filePath) {
-    return new Promise((resolve, reject) => {
-      const stream = this.client.send(
-        new GetObjectCommand({
-          Bucket: this.bucketName,
-          Key: filePath
-        })
-      )
-      stream.on('error', err => {
-        reject(err)
+  async download(filePath) {
+    const output = await this.client.send(
+      new GetObjectCommand({
+        Bucket: this.bucketName,
+        Key: filePath
       })
-      stream.pipe(concatStream(file => {
-        resolve(file)
-      }))
+    )
+
+    output.Body.on('error', err => {
+      throw err
     })
+    output.Body.pipe(concatStream(file => {
+      return file
+    }))
   }
 }
