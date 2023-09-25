@@ -27,6 +27,6 @@
     "fast-glob": "^3.2.5",
     "fs-extra": "^9.1.0",
     "ghost-storage-base": "^1.0.0",
-    "sharp": "^0.25.4"
+    "sharp": "^0.32.6"
   }
 }
